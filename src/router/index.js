@@ -16,7 +16,7 @@ const router = createRouter({
           meta: {
             title: "start",
           },
-          path: "start",
+          path: "/",
           name: "start",
           component: () => import("@/views/StartView.vue"), // Aquí se añade StartView
         },
@@ -62,19 +62,19 @@ const router = createRouter({
   ],
 });
 
-// Guard de navegación
 router.beforeEach((to, from, next) => {
   const isAuthenticated = store.getters.isAuthenticated;
 
   if (to.meta.requiresAuth && !isAuthenticated) {
-    // Si la ruta requiere autenticación y no está autenticado
+    // Si la ruta requiere autenticación y el usuario no está autenticado
     next({ name: 'login' });
-  } else if (to.name === 'login' && isAuthenticated) {
-    // Si está autenticado y trata de ir al login, redirigir al Home
-    next({ path: '/start' });
+  } else if (!to.meta.requiresAuth && isAuthenticated && to.name !== 'start') {
+    // Si el usuario está autenticado, redirigir siempre a /start
+    next({ name: 'start' });
   } else {
-    next(); // Permitir acceso
+    next(); // Permitir acceso a las rutas autorizadas
   }
 });
+
 
 export default router;
