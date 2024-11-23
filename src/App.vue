@@ -16,12 +16,6 @@ export default {
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
 
 #app {
   font-family: 'Poppins', sans-serif;
@@ -31,6 +25,6 @@ body {
 main {
   height: 100%;
   width: 100%;
-  display: flex;
+ 
 }
 </style>
