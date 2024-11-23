@@ -29,7 +29,7 @@ export default {
           store.dispatch("login", {
             token: response.data.data.token,
           });
-          router.push("/start"); // Redirigir al Home
+          router.push("/"); // Redirigir al Home
         } else {
           alert("Error en el inicio de sesión. Verifica tus credenciales.");
         }
