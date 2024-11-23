@@ -64,9 +64,12 @@
     </header>
 
     <!-- Contenido Principal -->
-    <main class="p-6 bg-gray-50 min-h-screen">
+    <main class=" bg-gray-50 min-h-screen">
       <router-view />
     </main>
+
+    <!-- ChatBot Persistente -->
+    <ChatBot />
   </div>
 </template>
 
@@ -74,8 +77,12 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import store from "@/store";
+import ChatBot from "@/components/ChatBot.vue";
 
 export default {
+  components: {
+    ChatBot,
+  },
   setup() {
     // Recuperar el nombre del usuario
     const username = ref(store.state.nombreApellidos || "Usuario");
@@ -101,5 +108,5 @@ export default {
 </script>
 
 <style scoped>
-/* Para mejorar aún más el diseño, puedes ajustar estos estilos */
+/* Personaliza el diseño global aquí */
 </style>

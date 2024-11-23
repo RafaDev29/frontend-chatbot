@@ -40,8 +40,8 @@ const router = createRouter({
           meta: {
             title: "Reportar Problema",
           },
-          path: "reportar",
-          name: "reportar",
+          path: "report",
+          name: "report",
           component: () => import("@/views/ReportView.vue"),
         },
         
@@ -71,7 +71,7 @@ router.beforeEach((to, from, next) => {
     next({ name: 'login' });
   } else if (to.name === 'login' && isAuthenticated) {
     // Si está autenticado y trata de ir al login, redirigir al Home
-    next({ path: '/' });
+    next({ path: '/start' });
   } else {
     next(); // Permitir acceso
   }
